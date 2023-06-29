@@ -96,4 +96,21 @@ public class CustomerController {
         return "customer/list";
     }
 
+    @GetMapping("/delete/{id}")
+    public String deleteCustomer(@PathVariable Long id, Model model) {
+        ICustomerService customerService = new CustomerServiceImpl();
+        List<Customer> customers = customerService.getAll();
+        try {
+            Customer customer = customerService.getById(id);
+            if (customer != null) {
+                customers.remove(customer);
+            }
+            model.addAttribute("customers", customers);
+            return "redirect:/customers";
+        } catch (Exception e) {
+            return "error/404";
+        }
+    }
+
+
 }

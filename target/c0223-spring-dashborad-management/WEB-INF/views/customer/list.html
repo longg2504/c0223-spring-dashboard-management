@@ -100,6 +100,9 @@
                                                         <td>
                                                             <a th:href="@{/customers/__${item.id}__}">Edit</a>
                                                         </td>
+                                                        <td>
+                                                                <a th:href="@{/customers/delete/__${item.id}__}" onclick="return confirm('Chắc chắn muốn xóa KH này?')">Delete</a>
+                                                        </td>
                                                     </tr>
                                                 </th:block>
                                                 </tbody>
